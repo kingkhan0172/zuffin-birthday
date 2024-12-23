@@ -1,0 +1,61 @@
+<!-- show_wishes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishes for Zuffin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #C44D58, #FF6B6B, #EDE6D6, #85553A);
+            color: #000;
+            text-align: center;
+        }
+        .container {
+            padding: 50px;
+            border: 5px solid #85553A;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #C44D58;
+        }
+        .wish-list {
+            margin-top: 30px;
+        }
+        .wish {
+            background: rgba(237, 230, 214, 0.8);
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            max-width: 600px;
+            border: 2px solid #FF6B6B;
+            color: #85553A;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Birthday Wishes for Zuffin</h1>
+        <div class="wish-list" id="wishList">
+            <!-- Wishes will appear here -->
+        </div>
+    </div>
+    <script>
+        const storedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+        const wishList = document.getElementById('wishList');
+
+        storedWishes.forEach(wish => {
+            const wishDiv = document.createElement('div');
+            wishDiv.classList.add('wish');
+            wishDiv.innerHTML = `<p><strong>${wish.name}</strong>: ${wish.wish}</p>`;
+            wishList.appendChild(wishDiv);
+        });
+    </script>
+</body>
+</html>
